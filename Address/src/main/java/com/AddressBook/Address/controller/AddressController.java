@@ -6,6 +6,7 @@ import lombok.extern.slf4j.Slf4j;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
+import jakarta.validation.Valid;
 import java.util.List;
 
 @Slf4j
@@ -33,13 +34,13 @@ public class AddressController {
     }
 
     @PostMapping
-    public ResponseEntity<AddressDTO> add(@RequestBody AddressDTO addressDTO) {
+    public ResponseEntity<AddressDTO> add(@Valid @RequestBody AddressDTO addressDTO) {
         log.info("Adding new address: {}", addressDTO);
         return ResponseEntity.ok(service.save(addressDTO));
     }
 
     @PutMapping("/{id}")
-    public ResponseEntity<AddressDTO> update(@PathVariable Long id, @RequestBody AddressDTO addressDTO) {
+    public ResponseEntity<AddressDTO> update(@PathVariable Long id, @Valid @RequestBody AddressDTO addressDTO) {
         log.info("Updating address with ID: {}", id);
         addressDTO.setId(id);
         return ResponseEntity.ok(service.save(addressDTO));
