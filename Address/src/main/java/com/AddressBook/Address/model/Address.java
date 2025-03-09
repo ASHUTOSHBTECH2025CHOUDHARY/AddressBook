@@ -2,7 +2,7 @@ package com.AddressBook.Address.model;
 
 import jakarta.persistence.*;
 import lombok.*;
-
+//Lombok
 @Entity
 @Data
 @NoArgsConstructor
